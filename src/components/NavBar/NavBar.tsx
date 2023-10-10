@@ -1,6 +1,9 @@
 import { SettingsIcon } from '@chakra-ui/icons'
-import { Box, FormControl, Input, Menu, MenuItem, Text } from '@chakra-ui/react'
+import { Box, Button, FormControl, Input, Menu, MenuItem, Text } from '@chakra-ui/react'
+import { FireBaseAuth } from '@utilities/index'
+import { signOut } from 'firebase/auth'
 import { NavLink } from 'react-router-dom'
+
 const NavBar = () => {
 
   return (
@@ -17,10 +20,9 @@ const NavBar = () => {
         <Menu>
           <Box as="li" listStyleType={"none"}><MenuItem as={NavLink} to={'/'}>Inicio</MenuItem></Box>
           <Box as="li" listStyleType={"none"}><MenuItem as={NavLink} to={'/login'}>Perfil</MenuItem></Box>
-          <Box as="li" listStyleType={"none"}>Cerrar Session</Box>
         </Menu>
       </Box>
-
+      <Button onClick={() => signOut(FireBaseAuth)}>Cerrar Session</Button>
     </Box>
   )
 }

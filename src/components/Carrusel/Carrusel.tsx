@@ -24,7 +24,7 @@ const Carrusel = () => {
 
   }, [])
 
-  console.log(counter)
+
   return (
     <Box position={"relative"} h={"100vh"} w={"400px"} flex={2}>
       {profesiones.map((item, index) => <Image key={index} src={item} alt="profesiones"
