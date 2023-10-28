@@ -22,7 +22,7 @@ const UseLogin = () => {
       singUser(email, password)
         .then((res) => {
           if (res.status) {
-            navigate('/');
+            navigate('/', { replace: true });
           } else {
             setMessage(res.message);
           }

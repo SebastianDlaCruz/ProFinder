@@ -20,7 +20,7 @@ const UseRegister = () => {
     if (name !== undefined && email !== undefined && password !== undefined) {
       createUser(name, email, password).then(res => {
         if (res.status) {
-          navigate('/');
+          navigate('/', { replace: true });
         } else {
           setMessage(res.message);
         }

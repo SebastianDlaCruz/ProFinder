@@ -1,3 +1,4 @@
+import { createProfile } from "@pages/auth/login/service/createProfile.service";
 import { FireBaseAuth } from "@utilities/index";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ResponseAuth } from "../model/createUser.model";
@@ -10,7 +11,7 @@ export const createUser = async (name: string, email: string, password: string):
     if (!userCredential) throw new Error("Erro al registra el usuario");
 
     await updateProfile(userCredential.user, { displayName: name, photoURL: '' });
-
+    await createProfile(userCredential.user.uid);
     return {
       status: true,
       message: "registro de usuario exitoso"

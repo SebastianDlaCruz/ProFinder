@@ -7,6 +7,7 @@ export const singUser = async (email: string, password: string): Promise<Respons
     const userCredential = await signInWithEmailAndPassword(FireBaseAuth, email, password);
     if (!userCredential) throw new Error("Error al iniciar session");
 
+
     return {
       status: true,
       message: 'éxito'

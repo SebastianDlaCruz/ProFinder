@@ -3,4 +3,6 @@ export interface UserModel {
   email: string;
   displayName: string;
   photoURL: string | null;
+  description: string;
+  keywords: string;
 }

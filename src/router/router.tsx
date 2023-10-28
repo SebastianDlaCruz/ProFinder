@@ -6,7 +6,7 @@ import { createBrowserRouter } from "react-router-dom";
 const Home = lazy(() => import('@pages/home/Home'));
 const Login = lazy(() => import('@pages/auth/login/Login'));
 const Register = lazy(() => import('@pages/auth/register/Register'));
-
+const Profile = lazy(() => import('@pages/view/profile/Profile'));
 
 export const router = createBrowserRouter([
   {
@@ -21,5 +21,9 @@ export const router = createBrowserRouter([
   {
     path: 'register',
     element: <CustomSuspense><Register /></CustomSuspense>
+  },
+  {
+    path: 'perfil',
+    element: <CustomSuspense><Profile /></CustomSuspense>
   }
 ])
