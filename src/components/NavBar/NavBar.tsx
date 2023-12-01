@@ -7,17 +7,26 @@ import { NavLink } from 'react-router-dom'
 import { ImageProfile } from '..'
 import userIcon from '/assets/icons/user.svg'
 
-const NavBar = () => {
+
+interface Props {
+  handleOpen: () => void;
+  handleCloset: () => void;
+}
+
+const NavBar = ({ handleOpen, handleCloset }: Props) => {
   const { user } = UseUserContext();
+
   return (
-    <Box as="nav" display={'flex'} justifyContent={"space-around"}
-      alignItems={"center"} h={"80px"} bgColor={"green.500"}>
+    <Box as="nav" position={"sticky"} top="0%" display={'flex'}
+      justifyContent={"space-around"}
+      alignItems={"center"} h={"80px"} bgColor={"green.500"} zIndex={"2"}>
       <Box display={"flex"} gap={"12px"} alignItems={"center"}>
         <SettingsIcon color={"#fff"} boxSize={6} />
         <Text as="h1" color={"#fff"} fontSize={"1.2em"}>ProFinder</Text>
       </Box>
       <FormControl w={"500px"}>
-        <Input type='search' placeholder='Buscar servicio' color={"#fff"} _placeholder={{ color: "#fff" }} />
+        <Input type='search' placeholder='Buscar servicio' color={"#fff"} _placeholder={{ color: "#fff" }}
+          onFocus={handleOpen} onBlur={handleCloset} />
       </FormControl>
       <Box as="menu" display={"flex"} alignItems={"center"} gap={"19px"} color={"white"}>
         <Menu>

@@ -8,4 +8,4 @@ export { default as Loading } from './Loading/Loading';
 export { default as MessageError } from './MessageError/MessageError';
 export { default as NavBar } from './NavBar/NavBar';
 export * from './index';
-
+export * from './index';

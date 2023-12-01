@@ -8,12 +8,14 @@ import {
   Stack,
   Textarea
 } from "@chakra-ui/react";
+import ContainerImage from "@components/ContainerImg/ContainerImg";
+import InputFileImg from "@components/InputFile/InputFile";
 import { MessageError } from "@components/index";
+import useGetImg from "@hook/UseGetImg/UseGetImg";
 import { services, typeOfService } from "@pages/home/util/index.util";
 import { useRef } from "react";
 import CustomSelect from "../CustomSelect/CustomSelect";
 import UseModal from "./hook/UseModal/UseModal";
-
 
 interface Props {
   isOpen: boolean;
@@ -23,6 +25,7 @@ interface Props {
 const ModalPost = ({ isOpen, onClose }: Props) => {
 
   const { errors, handleSubmit, onSubmit, register, onChangeServices, typeService } = UseModal();
+  const { handleImageUpdate, handleResetImg, imgRef, imgSrc, stateImg, setImgSrc, setStateImg } = useGetImg();
 
   const initialRef = useRef(null)
   const finalRef = useRef(null)
@@ -48,7 +51,7 @@ const ModalPost = ({ isOpen, onClose }: Props) => {
                 <Textarea resize={"none"} minH={"150px"} {...register("post")} ></Textarea>
                 <MessageError error={errors.post} textError={errors.post?.message} />
               </FormControl>
-
+              <ContainerImage onClick={handleResetImg} src={imgSrc} status={stateImg} />
               <FormControl isInvalid={errors.typeService ? true : false}>
                 <CustomSelect label="Tipo de servicio" register={register("typeService")} onChange={onChangeServices}>
                   {
@@ -84,6 +87,7 @@ const ModalPost = ({ isOpen, onClose }: Props) => {
 
             </ModalBody>
             <ModalFooter>
+              <InputFileImg onClick={handleImageUpdate} refImg={imgRef} />
               <Button type="submit" colorScheme='blue' mr={3}>
                 Save
               </Button>

@@ -8,3 +8,8 @@ export interface ModelPost {
   provisionOfService: string;
   publicationType: string;
 }
+
+
+export interface ModelPublic extends ModelPost {
+  id: string;
+}
